@@ -16,7 +16,7 @@
     <!-- Logo text or image -->
     <div class="flex items-center justify-between mb-4 md:mb-0">
       <h1 class="leading-none text-2xl text-grey-darkest cursor-pointer">
-          <router-link to='/'>Github</router-link>
+        <router-link to="/">Github</router-link>
       </h1>
 
       <a class="text-black hover:text-orange md:hidden" href="#">
@@ -25,85 +25,59 @@
     </div>
     <!-- END Logo text or image -->
 
-    <!-- Search field -->
-    <form class="mb-4 w-full md:mb-0 md:w-1/4">
-      <label class="hidden" for="search-form">Search</label>
-      <input
-        class="
-          bg-grey-lightest
-          border-2
-          focus:border-orange
-          p-2
-          rounded-lg
-          shadow-inner
-          w-full
-        "
-        placeholder="Search"
-        type="text"
-      />
-      <button class="hidden">Submit</button>
-    </form>
-    <!-- END Search field -->
-
-    <!-- Global navigation -->
     <nav>
       <ul class="list-reset md:flex md:items-center">
         <li class="md:ml-4">
-          <a
+          <form class="mb-4 w-full md:mb-0">
+            <label class="hidden" for="search-form">Search</label>
+            <input
+              class="
+                border border-blue-500
+                focus:outline-none
+                focus:ring-2 focus:ring-green-500
+                focus:border-transparent
+                rounded-lg
+                shadow-inner
+                w-full
+                p-2
+                bg-gray-900
+              "
+              placeholder="Search or jump to..."
+              type="text"
+            />
+            <button class="hidden">Submit</button>
+          </form>
+        </li>
+        <li class="md:ml-4" v-for="i in [1, 2]" :key="i">
+          <router-link
             class="
               block
               no-underline
-              hover:underline
               py-2
               text-grey-darkest
-              hover:text-black
+              hover:text-gray-300
               md:border-none
               md:p-0
             "
-            href="#"
+            to="#"
           >
-            Products
-          </a>
+            Repositories
+          </router-link>
         </li>
         <li class="md:ml-4">
-          <a
-            class="
-              border-t
-              block
-              no-underline
-              hover:underline
-              py-2
-              text-grey-darkest
-              hover:text-black
-              md:border-none
-              md:p-0
-            "
-            href="#"
+          <router-link
+            to="https://bedramtamang.com.np"
+            class="flex items-center"
           >
-            About
-          </a>
-        </li>
-        <li class="md:ml-4">
-          <a
-            class="
-              border-t
-              block
-              no-underline
-              hover:underline
-              py-2
-              text-grey-darkest
-              hover:text-black
-              md:border-none
-              md:p-0
-            "
-            href="#"
-          >
-            Contact
-          </a>
+            <img
+              src="https://bedramtamang.com.np/img/profile.jpg"
+              alt="Avatar of Jonathan Reinink"
+              class="w-8 h-8 rounded-full"
+            />
+          </router-link>
         </li>
       </ul>
     </nav>
-    <!-- END Global navigation -->
   </header>
 </template>
 
