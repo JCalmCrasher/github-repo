@@ -1,48 +1,26 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-    </v-app-bar>
-
-    <v-main>
-      Githubs
-    </v-main>
-  </v-app>
+  <div>
+    <the-header />
+  </div>
 </template>
 
 <script>
-
+import TheHeader from "./components/nav/TheHeader.vue";
 export default {
-  name: 'App',
+  name: "App",
 
-  components: {
-  },
+  components: { TheHeader },
 
   data: () => ({
     //
   }),
 };
 </script>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;600&display=swap");
+
+* {
+  font-family: "Mulish", sans-serif;
+}
+</style>
