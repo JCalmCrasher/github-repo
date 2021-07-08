@@ -11,6 +11,7 @@
       md:pb-4
       dark:bg-gray-800
       text-white
+      px-7
     "
   >
     <!-- Logo text or image -->
@@ -32,14 +33,15 @@
             <label class="hidden" for="search-form">Search</label>
             <input
               class="
-                border border-blue-500
+                border border-gray-700
                 focus:outline-none
                 focus:ring-2 focus:ring-green-500
                 focus:border-transparent
                 rounded-lg
                 shadow-inner
                 w-full
-                p-2
+                py-1
+                px-3
                 bg-gray-900
               "
               placeholder="Search or jump to..."
@@ -48,7 +50,7 @@
             <button class="hidden">Submit</button>
           </form>
         </li>
-        <li class="md:ml-4" v-for="i in [1, 2]" :key="i">
+        <li class="md:ml-4">
           <router-link
             class="
               block
@@ -59,16 +61,15 @@
               md:border-none
               md:p-0
             "
-            to="#"
+            to=""
           >
-            Repositories
+            <button>
+              <i class="fas fa-bell"></i>
+            </button>
           </router-link>
         </li>
         <li class="md:ml-4">
-          <router-link
-            to="https://bedramtamang.com.np"
-            class="flex items-center"
-          >
+          <router-link to="" class="flex items-center">
             <img
               src="https://bedramtamang.com.np/img/profile.jpg"
               alt="Avatar of Jonathan Reinink"
