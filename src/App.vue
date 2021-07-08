@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <the-header />
-    <router-view />
+    <main class="px-7 text-white">
+      <router-view />
+    </main>
   </div>
 </template>
 
@@ -23,5 +25,9 @@ export default {
 
 * {
   font-family: "Mulish", sans-serif;
+}
+
+body {
+  @apply dark:bg-gray-900;
 }
 </style>

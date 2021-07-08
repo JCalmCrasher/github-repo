@@ -1,28 +1,14 @@
 <template>
-  <header
-    class="
-      border-b
-      md:flex
-      md:items-center
-      md:justify-between
-      p-4
-      pb-0
-      shadow-lg
-      md:pb-4
-      dark:bg-gray-800
-      text-white
-      px-7
-    "
-  >
+  <header>
     <!-- Logo text or image -->
     <div class="flex items-center justify-between mb-4 md:mb-0">
       <h1 class="leading-none text-2xl text-grey-darkest cursor-pointer">
         <router-link to="/">Github</router-link>
       </h1>
 
-      <a class="text-black hover:text-orange md:hidden" href="#">
+      <router-link class="text-white hover:text-orange md:hidden" to="">
         <i class="fa fa-2x fa-bars"></i>
-      </a>
+      </router-link>
     </div>
     <!-- END Logo text or image -->
 
@@ -33,7 +19,7 @@
             <label class="hidden" for="search-form">Search</label>
             <input
               class="
-                border border-gray-700
+                border border-gray-600
                 focus:outline-none
                 focus:ring-2 focus:ring-green-500
                 focus:border-transparent
@@ -42,7 +28,7 @@
                 w-full
                 py-1
                 px-3
-                bg-gray-900
+                bg-gray-800
               "
               placeholder="Search or jump to..."
               type="text"
@@ -89,4 +75,18 @@ export default {
 </script>
 
 <style>
+header {
+  background-color: rgba(27, 24, 39);
+  @apply border-b
+      md:flex
+      md:items-center
+      md:justify-between
+      p-4
+      pb-0
+      shadow-md
+      md:pb-4
+      text-white
+      px-7
+      border-gray-900;
+}
 </style>
