@@ -18,16 +18,16 @@ export default {
 
 <style>
 .card {
-  /* padding: 2rem !important; */
   @apply shadow-xl
         w-full
-        h-48
         bg-gray-800
         cursor-pointer
         border-none
         rounded-md
+        flex
         flex-col
-        p-8
+        py-6
+        px-5
 }
 
 .card--header {
@@ -35,6 +35,6 @@ export default {
 }
 
 .card--body{
-  @apply flex flex-col space-y-2 sm:max-w-xl;
+  @apply flex flex-col space-y-2 overflow-auto;
 }
 </style>
