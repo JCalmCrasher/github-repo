@@ -11,7 +11,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div.paginate {
     @apply flex mx-auto mt-3;
 }

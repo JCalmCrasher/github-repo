@@ -49,12 +49,12 @@
             "
             to=""
           >
-            <button>
+            <button @click="toggleHiddenMenus">
               <i class="fas fa-bell"></i>
             </button>
           </router-link>
         </li>
-        <li class="md:ml-4">
+        <li class="md:ml-4 sm:mb-0 mb-2">
           <router-link to="" class="flex items-center">
             <img
               src="https://bedramtamang.com.np/img/profile.jpg"
@@ -71,6 +71,16 @@
 <script>
 export default {
   name: "TheHeader",
+  data() {
+    return {
+      showHiddenMenu: false,
+    };
+  },
+  methods: {
+    toggleHiddenMenus() {
+      this.showHiddenMenu = !this.showHiddenMenu;
+    },
+  },
 };
 </script>
 

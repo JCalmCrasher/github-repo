@@ -24,7 +24,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card {
   @apply w-full
         bg-gray-800
