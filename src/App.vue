@@ -27,6 +27,10 @@ export default {
   font-family: "Mulish", sans-serif;
 }
 
+#app{
+  @apply py-6;
+}
+
 body {
   @apply dark:bg-gray-900;
 }

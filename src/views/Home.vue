@@ -1,7 +1,8 @@
 <template>
   <div class="home sm:mt-4 space-y-10 max-w-7xl">
     <div>
-      <div class="flex flex-col space-y-9">
+      <div class="flex flex-col">
+        <h1 class="title">Profile</h1>
         <card-widget>
           <template v-slot:cardHeader>
             <h1 class="font-bold">JoshX</h1>
@@ -37,10 +38,23 @@
             </div>
           </template>
         </card-widget>
-        <div class="flex flex-col">
-          <span class="my-4 text-gray-300">Repos </span>
-          <div class="flex space-x-6 items-start">
-            <card-widget class="bg-white grid grid-cols-2" v-for="card in [1, 2]" :key="card">
+        <div class="flex flex-col mt-4">
+          <h1 class="title">Popular Repos</h1>
+          <div
+            class="
+              grid
+              sm:grid-cols-2
+              sm:gap-5
+              sm:space-y-0
+              grid-cols-1
+              space-y-2
+            "
+          >
+            <card-widget
+              class="bg-white"
+              v-for="card in [1, 2, 1, 2]"
+              :key="card"
+            >
               <template v-slot:cardHeader>
                 <h1 class="font-bold">Github GraphQl</h1>
               </template>
@@ -52,6 +66,10 @@
                     <small
                       ><i class="fas fa-clock"></i> Updated 21 hours ago</small
                     >
+                    <small
+                      ><i class="fa fa-star" aria-hidden="true"></i
+                      ><span> 1</span></small
+                    >
                   </div>
                 </div>
               </template>
@@ -59,20 +77,50 @@
           </div>
         </div>
       </div>
-      <card-widget class="max-w-lg">
-        <template v-slot:cardHeader> Something </template>
-        <template v-slot:cardBody>
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingthingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingthingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingthingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-          thingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomething
-        </template>
-      </card-widget>
+      <div
+        class="
+          w-full
+          cursor-pointer
+          border-none
+          rounded-md
+          flex flex-col
+          max-w-lg
+        "
+      >
+        <div class="flex flex-col">
+          <div class="flex">
+            <h1 class="title">Open</h1>
+          </div>
+          <div class="space-y-2 h-full overflow-auto" style="max-height: 30rem">
+            <card-widget
+              v-for="i in [1, 2, 3, 4, 5, 6]"
+              :key="i"
+              :isBigCard="false"
+              :hasHeader="false"
+              :hasFooter="true"
+            >
+              <template v-slot:cardBody>
+                <h1 class="font-bold">Github GraphQl</h1>
+                <div class="space-y-1 pb-2">
+                  <p class="text-gray-400">Desktop App</p>
+                  <div class="flex space-x-4">
+                    <small><i class="fas fa-laptop"></i> Vue</small>
+                    <small
+                      ><i class="fas fa-clock"></i> Updated 21 hours ago</small
+                    >
+                    <small
+                      ><i class="fa fa-star" aria-hidden="true"></i
+                      ><span> 1</span></small
+                    >
+                  </div>
+                </div>
+              </template>
+              <template v-slot:>
+              </template>
+            </card-widget>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -94,14 +142,17 @@ export default {
 </script>
 
 <style scoped>
-.home div.card:hover {
-  transition: 0.5s;
+/* .home div.card:hover {
+  transition: 0.5s;true
   background-color: rgba(41, 31, 45);
-}
+} */
 
 div.home > div:first-of-type {
   @apply flex sm:space-x-8 space-x-0 items-start sm:flex-row flex-col sm:space-y-0 space-y-2;
 }
 
+h1.title {
+  @apply text-lg py-2 text-gray-300;
+}
 /* p  */
 </style>
