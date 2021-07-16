@@ -91,9 +91,9 @@
           <div class="flex">
             <h1 class="title">Open</h1>
           </div>
-          <div class="space-y-2 h-full overflow-auto" style="max-height: 30rem">
+          <div class="space-y-2">
             <card-widget
-              v-for="i in [1, 2, 3, 4, 5, 6]"
+              v-for="i in [1, 2, 3, 4, 5, 6, 7, 8]"
               :key="i"
               :isBigCard="false"
               :hasHeader="false"
@@ -115,10 +115,9 @@
                   </div>
                 </div>
               </template>
-              <template v-slot:>
-              </template>
             </card-widget>
           </div>
+          <card-paginate />
         </div>
       </div>
     </div>
@@ -126,11 +125,13 @@
 </template>
 
 <script>
+import CardPaginate from "../components/widgets/CardPaginate.vue";
 import CardWidget from "../components/widgets/CardWidget.vue";
 export default {
   name: "Home",
   components: {
     CardWidget,
+    CardPaginate,
   },
   data() {
     return {
