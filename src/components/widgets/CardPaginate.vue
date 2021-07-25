@@ -13,7 +13,7 @@ export default {
 
 <style scoped>
 div.paginate {
-    @apply flex mx-auto mt-3;
+    @apply flex mx-auto my-5;
 }
 
 button{
