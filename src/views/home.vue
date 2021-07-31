@@ -3,7 +3,7 @@
     <div>
       <div class="flex flex-col">
         <h1 class="title">Profile</h1>
-        <card-widget class="bio">
+        <card class="bio">
           <template v-slot:cardHeader>
             <h1 class="font-bold">JoshX</h1>
             <button
@@ -37,23 +37,22 @@
               >
             </div>
           </template>
-        </card-widget>
+        </card>
         <div class="flex flex-col mt-4">
           <h1 class="title">Popular Repos</h1>
           <div
             class="
-              grid
-              grid-cols-1
+              grid grid-cols-1
               space-y-2
               md:grid-cols-2
               md:gap-5
               md:space-y-0
             "
           >
-            <card-widget
+            <card
               class="bg-white repo"
-              v-for="card in [1, 2, 1, 2]"
-              :key="card"
+              v-for="(card, i) in [1, 2, 1, 2]"
+              :key="i"
             >
               <template v-slot:cardHeader>
                 <h1 class="font-bold">Github GraphQl</h1>
@@ -66,15 +65,14 @@
                     <small
                       ><i class="fas fa-clock"></i> Updated 21 hours ago</small
                     >
-                    <small
-                    class="flex items-baseline"
+                    <small class="flex items-baseline"
                       ><i class="fa fa-star" aria-hidden="true"></i
                       ><span> 1</span></small
                     >
                   </div>
                 </div>
               </template>
-            </card-widget>
+            </card>
           </div>
         </div>
       </div>
@@ -84,8 +82,8 @@
             <h1 class="title">Open</h1>
           </div>
           <div class="space-y-2">
-            <card-widget
-              v-for="i in [1, 2, 3, 4, 5, 6, 7, 8]"
+            <card
+              v-for="(card, i) in [1, 2, 3, 4, 5, 6, 7, 8]"
               :key="i"
               :isBigCard="false"
               :hasHeader="false"
@@ -118,7 +116,7 @@
                   </div>
                 </div>
               </template>
-            </card-widget>
+            </card>
           </div>
           <card-paginate />
         </div>
@@ -128,12 +126,12 @@
 </template>
 
 <script>
-import CardPaginate from "../components/widgets/CardPaginate.vue";
-import CardWidget from "../components/widgets/CardWidget.vue";
+import CardPaginate from "../components/widgets/card-paginate.vue";
+import Card from "../components/widgets/card.vue";
 export default {
   name: "Home",
   components: {
-    CardWidget,
+    Card,
     CardPaginate,
   },
   data() {

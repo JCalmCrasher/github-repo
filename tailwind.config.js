@@ -8,9 +8,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      width: ['hover'],
+      width: ['hover', 'focus'],
       height: ['hover'],
     },
   },
-  plugins: [],
+  plugins: []
 }

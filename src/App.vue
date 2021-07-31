@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import TheHeader from "./components/nav/TheHeader.vue";
+import TheHeader from "./components/nav/the-header.vue";
 export default {
   name: "App",
 

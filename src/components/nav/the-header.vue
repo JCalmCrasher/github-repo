@@ -58,7 +58,7 @@
           <router-link to="" class="flex items-center">
             <img
               src="https://bedramtamang.com.np/img/profile.jpg"
-              alt="Avatar of Jonathan Reinink"
+              alt="John Doe"
               class="w-8 h-8 rounded-full"
             />
           </router-link>

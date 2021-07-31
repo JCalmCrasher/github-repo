@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "CardWidget",
+  name: "Card",
   props: {
     isBigCard: { type: Boolean, default: true },
     hasHeader: { type: Boolean, default: true },
