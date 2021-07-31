@@ -28,7 +28,7 @@ export default {
 }
 
 #app{
-  @apply py-6;
+  @apply py-1;
 }
 
 body {

@@ -1,6 +1,7 @@
 <template>
-  <div class="search__wrapper" :class="isSearchFocus ? 'w-1/2' : 'w-1/3'">
+  <div class="search__wrapper" :class="isSearchFocus ? 'lg:w-1/2 w-full' : 'lg:w-1/3 w-11/12'">
     <card>
+      
       <template v-slot:cardHeader>
         <input
           class="
@@ -45,9 +46,5 @@ export default {
 div.search__wrapper {
   transition: all 0.2s ease;
   @apply flex m-auto mt-7;
-}
-
-div.search__wrapper:focus {
-  @apply w-3/4;
 }
 </style>

@@ -2,20 +2,42 @@
   <header>
     <!-- Logo text or image -->
     <div class="flex items-center justify-between mb-4 md:mb-0">
-      <h1 class="leading-none text-2xl text-grey-darkest cursor-pointer">
-        <router-link to="/">Github</router-link>
+      <button
+        class="
+          border-4 border-solid
+          py-1
+          px-3
+          rounded-md
+          border-gray-800
+          block
+          lg:hidden
+        "
+        @click="toggleNavMenu"
+      >
+        <i class="fa fa-2x fa-bars"></i>
+      </button>
+      <h1
+        class="
+          leading-none
+          text-2xl text-grey-darkest
+          cursor-pointer
+          inline-flex
+        "
+      >
+        <img src="../../assets/github.png" width="50" />
+        <router-link to="/" class="my-auto">Github Search</router-link>
       </h1>
 
-      <router-link class="text-white hover:text-orange md:hidden" to="">
-        <i class="fa fa-2x fa-bars"></i>
-      </router-link>
     </div>
     <!-- END Logo text or image -->
 
     <nav>
-      <ul class="list-reset md:flex md:items-center">
+      <ul class="list-reset md:flex md:items-center" v-if="!loading">
         <li class="md:ml-4">
-          <form class="mb-4 w-full md:mb-0">
+          <form
+            class="mb-4 w-full md:mb-0 text-center lg:block"
+            :class="isNavMenuShown ? 'block' : 'hidden'"
+          >
             <label class="hidden" for="search-form">Search</label>
             <input
               class="
@@ -25,7 +47,6 @@
                 focus:border-transparent
                 rounded-lg
                 shadow-inner
-                w-full
                 py-1
                 px-3
                 bg-gray-800
@@ -36,33 +57,18 @@
             <button class="hidden">Submit</button>
           </form>
         </li>
-        <li class="md:ml-4">
-          <router-link
-            class="
-              block
-              no-underline
-              py-2
-              text-grey-darkest
-              hover:text-gray-300
-              md:border-none
-              md:p-0
-            "
-            to=""
-          >
-            <button @click="toggleHiddenMenus">
-              <i class="fas fa-bell"></i>
-            </button>
-          </router-link>
-        </li>
-        <li class="md:ml-4 sm:mb-0 mb-2">
-          <router-link to="" class="flex items-center">
+        <!-- <li
+          class="md:ml-4 sm:mb-0 mb-2 lg:block"
+          :class="isNavMenuShown ? 'block' : 'hidden'"
+        >
+          <router-link to="">
             <img
               src="https://bedramtamang.com.np/img/profile.jpg"
               alt="John Doe"
-              class="w-8 h-8 rounded-full"
+              class="w-8 h-8 rounded-full mx-auto"
             />
           </router-link>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </header>
@@ -73,18 +79,19 @@ export default {
   name: "TheHeader",
   data() {
     return {
-      showHiddenMenu: false,
+      isNavMenuShown: false,
+      loading: true,
     };
   },
   methods: {
-    toggleHiddenMenus() {
-      this.showHiddenMenu = !this.showHiddenMenu;
+    toggleNavMenu() {
+      this.isNavMenuShown = !this.isNavMenuShown;
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 header {
   background-color: rgba(27, 24, 39);
   @apply border-b
@@ -99,4 +106,6 @@ header {
       px-7
       border-gray-900;
 }
+
+/* inp */
 </style>
