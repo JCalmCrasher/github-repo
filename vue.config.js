@@ -3,11 +3,11 @@ module.exports = {
     'vuetify'
   ],
 
-  // pluginOptions: {
-  //   apollo: {
-  //     enableMocks: true,
-  //     enableEngine: true,
-  //     lintGQL: false,
-  //   }
-  // }
+  pluginOptions: {
+    apollo: {
+      enableMocks: true,
+      enableEngine: true,
+      lintGQL: true,
+    }
+  }
 }
