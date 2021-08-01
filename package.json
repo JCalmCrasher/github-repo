@@ -33,7 +33,6 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "graphql-tag": "^2.9.0",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "vue-cli-plugin-apollo": "~0.22.2",
@@ -53,20 +52,7 @@
     ],
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {
-      "graphql/template-strings": [
-        "error",
-        {
-          "env": "literal",
-          "projectName": "app",
-          "schemaJsonFilepath": "node_modules/.temp/graphql/schema.json"
-        }
-      ]
-    },
-    "plugins": [
-      "graphql"
-    ]
+    }
   },
   "browserslist": [
     "> 1%",
