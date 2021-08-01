@@ -1,7 +1,6 @@
 <template>
   <div class="search__wrapper" :class="isSearchFocus ? 'lg:w-1/2 w-full' : 'lg:w-1/3 w-11/12'">
     <card>
-      
       <template v-slot:cardHeader>
         <input
           class="
