@@ -36,7 +36,6 @@ export default {
   methods: {
     searchFocus(val = true) {
       this.isSearchFocus = val;
-      console.log(process.env.VUE_APP_APOLLO_ENGINE_SERVICE)
     },
   },
 };
