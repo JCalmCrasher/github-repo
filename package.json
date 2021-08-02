@@ -22,6 +22,7 @@
     "shortid": "^2.2.8",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^2.6.11",
+    "vue-apollo": "^3.0.0-beta.11",
     "vue-router": "^3.5.2",
     "vuetify": "^2.4.0",
     "vuex": "^3.4.0"
@@ -35,6 +36,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "graphql-tag": "^2.9.0",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "vue-cli-plugin-apollo": "~0.22.2",
