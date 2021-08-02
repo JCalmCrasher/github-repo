@@ -6,19 +6,14 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('../views/home.vue')
+    name: 'SearchUser',
+    component: () => import('../views/search-user.vue')
   },
   {
     path: '/home',
-    name: 'Home',
-    component: () => import('../views/home.vue')
+    name: 'SearchUser',
+    component: () => import('../views/search-user.vue')
   },
-  {
-    path: '/test',
-    name: 'Test',
-    component: () => import('../views/test.vue')
-  }
 ]
 
 const router = new VueRouter({

@@ -1,5 +1,9 @@
 <template>
-  <div class="search__wrapper" :class="isSearchFocus ? 'lg:w-1/2 w-full' : 'lg:w-1/3 w-11/12'">
+  <div
+    class="search__wrapper"
+    :class="isSearchFocus ? 'lg:w-1/2 w-full' : 'lg:w-1/3 w-11/12'"
+  >
+    {{ repository }}
     <card>
       <template v-slot:cardHeader>
         <input
@@ -24,19 +28,26 @@
 </template>
 
 <script>
+// import gql from "graphql-tag";
+import { Sample } from '../queries/sample'
+
 import card from "../components/widgets/card.vue";
 export default {
-  name: "Test",
+  name: "SearchUser",
   components: { card },
   data() {
     return {
       isSearchFocus: false,
+      hello: "",
     };
   },
   methods: {
     searchFocus(val = true) {
       this.isSearchFocus = val;
     },
+  },
+  apollo: {
+    repository: Sample,
   },
 };
 </script>

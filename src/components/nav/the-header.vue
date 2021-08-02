@@ -1,7 +1,7 @@
 <template>
   <header>
     <!-- Logo text or image -->
-    <div class="flex items-center justify-between mb-4 md:mb-0">
+    <div class="flex items-center mb-4 md:mb-0">
       <button
         class="
           border-4 border-solid
@@ -11,6 +11,7 @@
           border-gray-800
           block
           lg:hidden
+          md:hidden
         "
         @click="toggleNavMenu"
       >
@@ -57,7 +58,7 @@
             <button class="hidden">Submit</button>
           </form>
         </li>
-        <!-- <li
+        <li
           class="md:ml-4 sm:mb-0 mb-2 lg:block"
           :class="isNavMenuShown ? 'block' : 'hidden'"
         >
@@ -68,7 +69,7 @@
               class="w-8 h-8 rounded-full mx-auto"
             />
           </router-link>
-        </li> -->
+        </li>
       </ul>
     </nav>
   </header>
@@ -85,6 +86,7 @@ export default {
   },
   methods: {
     toggleNavMenu() {
+      console.log(this.isNavMenuShown);
       this.isNavMenuShown = !this.isNavMenuShown;
     },
   },
@@ -100,11 +102,11 @@ header {
       md:justify-between
       p-4
       pb-0
-      shadow-md
+      shadow-xl
       md:pb-4
       text-white
       px-7
-      border-gray-900;
+      border-gray-800;
 }
 
 /* inp */

@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueApollo from 'vue-apollo'
-import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/graphql-client'
+import {
+  createApolloClient,
+  restartWebsockets
+} from 'vue-cli-plugin-apollo/graphql-client'
 
 // Install the vue plugin
 Vue.use(VueApollo)
@@ -37,7 +40,14 @@ const defaultOptions = {
   // cache: myCache
 
   // Override the way the Authorization header is set
-  // getAuth: (tokenName) => ...
+  getAuth: () => {
+    const token = process.env.VUE_APP_GITHUB_GRAPHQL_AUTH_TOKEN;
+    if (token) {
+
+      return `Bearer ${token}`;
+    }
+    return '';
+  },
 
   // Additional ApolloClient options
   // apollo: { ... }
@@ -47,9 +57,12 @@ const defaultOptions = {
 }
 
 // Call this in the Vue app file
-export function createProvider (options = {}) {
+export function createProvider(options = {}) {
   // Create apollo client
-  const { apolloClient, wsClient } = createApolloClient({
+  const {
+    apolloClient,
+    wsClient
+  } = createApolloClient({
     ...defaultOptions,
     ...options,
   })
@@ -63,7 +76,7 @@ export function createProvider (options = {}) {
         // fetchPolicy: 'cache-and-network',
       },
     },
-    errorHandler (error) {
+    errorHandler(error) {
       // eslint-disable-next-line no-console
       console.log('%cError', 'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;', error.message)
     },
@@ -73,7 +86,7 @@ export function createProvider (options = {}) {
 }
 
 // Manually call this when user log in
-export async function onLogin (apolloClient, token) {
+export async function onLogin(apolloClient, token) {
   if (typeof localStorage !== 'undefined' && token) {
     localStorage.setItem(AUTH_TOKEN, token)
   }
@@ -87,7 +100,7 @@ export async function onLogin (apolloClient, token) {
 }
 
 // Manually call this when user log out
-export async function onLogout (apolloClient) {
+export async function onLogout(apolloClient) {
   if (typeof localStorage !== 'undefined') {
     localStorage.removeItem(AUTH_TOKEN)
   }
