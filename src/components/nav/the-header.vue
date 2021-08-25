@@ -81,7 +81,7 @@ export default {
   data() {
     return {
       isNavMenuShown: false,
-      loading: true,
+      loading: false,
     };
   },
   methods: {
