@@ -17,10 +17,11 @@
             bg-gray-800
             border-b border-solid
           "
-          @focus="searchFocus(true)"
-          @blur="searchFocus(false)"
           placeholder="Search a username..."
           type="text"
+          @focus="searchFocus(true)"
+          @blur="searchFocus(false)"
+          @change="searchUsername"
         />
       </template>
     </card>
@@ -29,7 +30,7 @@
 
 <script>
 // import gql from "graphql-tag";
-import { Sample } from '../queries/sample'
+import { Sample } from "../queries/sample";
 
 import card from "../components/widgets/card.vue";
 export default {
@@ -44,6 +45,9 @@ export default {
   methods: {
     searchFocus(val = true) {
       this.isSearchFocus = val;
+    },
+    searchUsername() {
+      console.log("searchUsername");
     },
   },
   apollo: {

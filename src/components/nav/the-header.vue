@@ -4,7 +4,7 @@
     <div class="flex items-center mb-4 md:mb-0">
       <button
         class="
-          border-4 border-solid
+          border-2 border-solid
           py-1
           px-3
           rounded-md
@@ -13,9 +13,10 @@
           lg:hidden
           md:hidden
         "
+        v-if="loading === 1"
         @click="toggleNavMenu"
       >
-        <i class="fa fa-2x fa-bars"></i>
+        <i class="fa fa-bars"></i>
       </button>
       <h1
         class="
@@ -28,12 +29,11 @@
         <img src="../../assets/github.png" width="50" />
         <router-link to="/" class="my-auto">Github Search</router-link>
       </h1>
-
     </div>
     <!-- END Logo text or image -->
 
     <nav>
-      <ul class="list-reset md:flex md:items-center" v-if="!loading">
+      <ul class="list-reset md:flex md:items-center" v-if="loading === 1">
         <li class="md:ml-4">
           <form
             class="mb-4 w-full md:mb-0 text-center lg:block"
@@ -81,12 +81,11 @@ export default {
   data() {
     return {
       isNavMenuShown: false,
-      loading: false,
+      loading: 0,
     };
   },
   methods: {
     toggleNavMenu() {
-      console.log(this.isNavMenuShown);
       this.isNavMenuShown = !this.isNavMenuShown;
     },
   },
