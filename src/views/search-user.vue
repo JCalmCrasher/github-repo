@@ -3,7 +3,6 @@
     class="search__wrapper"
     :class="isSearchFocus ? 'lg:w-1/2 w-full' : 'lg:w-1/3 w-11/12'"
   >
-    <!-- {{ repository }} -->
     <card>
       <template v-slot:cardHeader>
         <input
@@ -21,8 +20,11 @@
           type="text"
           @focus="searchFocus(true)"
           @blur="searchFocus(false)"
-          @change="searchUsername"
+          v-model="username"
         />
+        <button class="py-0 px-2 bg-gray-900 rounded">
+          <i class="fas fa-search"></i>
+        </button>
       </template>
     </card>
   </div>
@@ -40,6 +42,7 @@ export default {
     return {
       isSearchFocus: false,
       hello: "",
+      username: "",
     };
   },
   methods: {
@@ -47,11 +50,16 @@ export default {
       this.isSearchFocus = val;
     },
     searchUsername() {
-      console.log("searchUsername");
+      console.log("logged");
     },
   },
   apollo: {
     repository: Sample,
+  },
+  watch: {
+    username(val) {
+      console.log(val);
+    },
   },
 };
 </script>

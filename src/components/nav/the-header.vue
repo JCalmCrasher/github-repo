@@ -107,6 +107,4 @@ header {
       px-7
       border-gray-800;
 }
-
-/* inp */
 </style>

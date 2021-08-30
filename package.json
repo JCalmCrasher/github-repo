@@ -12,7 +12,6 @@
     "apollo:start": "vue-cli-service apollo:start"
   },
   "dependencies": {
-    "@fortawesome/vue-fontawesome": "^2.0.2",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "^9",
     "core-js": "^3.6.5",
