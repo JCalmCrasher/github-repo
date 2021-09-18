@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'SearchUser',
+    name: 'Home',
     component: () => import('../views/search-user.vue')
   },
   {
