@@ -1,38 +1,38 @@
 <template>
   <div class="home sm:mt-4 space-y-10 max-w-7xl">
     <div>
-      <div class="flex flex-col">
+      <div class="flex flex-col w-full">
         <h1 class="title">Profile</h1>
         <card class="bio">
           <template v-slot:cardHeader>
-            <h1 class="font-bold">JoshX</h1>
+            <h1 class="font-bold">{{ user.user.name }}</h1>
             <button
               class="h-7 px-3 text-indigo-100 bg-green-600 rounded-lg text-sm"
             >
-              <span class="mr-2">JCalmCrasher</span>
+              <span class="mr-2">{{ user.user.login }}</span>
             </button>
           </template>
           <template v-slot:cardBody>
-            <p class="h-24 overflow-y-auto">
-              {{ userBio }}
+            <p class="overflow-y-auto">
+              {{ user.user.bio }}
             </p>
             <p class="space-x-4">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span>Nigeria</span>
+              <span>{{ user.user.location }}</span>
             </p>
             <div class="flex space-x-3">
               <div class="space-x-1 text-sm">
                 <router-link to=""
                   ><span
-                    ><i class="fa fa-users" aria-hidden="true"></i> 0
-                    followers</span
+                    ><i class="fa fa-users" aria-hidden="true"></i>
+                    {{ user.user.followers.totalCount }} followers</span
                   ></router-link
                 >
-                <router-link to=""><span>0 followers</span></router-link>
+                <router-link to=""><span>{{ user.user.following.totalCount }} followers</span></router-link>
               </div>
               <router-link to=""
                 ><span
-                  ><i class="fa fa-star" aria-hidden="true"></i> 0</span
+                  ><i class="fa fa-star" aria-hidden="true"></i> {{ user.user.starredRepositories.totalCount }}</span
                 ></router-link
               >
             </div>
@@ -76,7 +76,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full border-none rounded-md flex flex-col max-w-md">
+      <div class="w-full border-none rounded-md flex flex-col">
         <div class="flex flex-col">
           <div class="flex">
             <h1 class="title">Open</h1>
@@ -129,7 +129,8 @@
 import CardPaginate from "../components/widgets/card-paginate.vue";
 import Card from "../components/widgets/card.vue";
 export default {
-  name: "Home",
+  name: "UserProfile",
+  props: { user: { type: Object } },
   components: {
     Card,
     CardPaginate,
@@ -144,11 +145,6 @@ export default {
 </script>
 
 <style scoped>
-/* .home div.card:hover {
-  transition: 0.5s;true
-  background-color: rgba(41, 31, 45);
-} */
-
 div.home > div:first-of-type {
   @apply flex sm:space-x-8 space-x-0 items-start sm:flex-row flex-col sm:space-y-0 space-y-2;
 }
@@ -162,15 +158,11 @@ h1.title {
   background-size: 300%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* background-position: center; */
 }
 
 .repo {
   background-image: url("../assets/repo.svg");
   background-size: 560%;
-  /* background-repeat: no-repeat; */
-  /* background-attachment: fixed; */
   background-position: left;
 }
-/* p  */
 </style>

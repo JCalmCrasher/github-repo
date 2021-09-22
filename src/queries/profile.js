@@ -1,9 +1,20 @@
 import gql from 'graphql-tag';
 
-export const PROFILE = gql`
+export const PROFILE = gql `
 query userProfile($login: String!)  {
   user(login:$login) {
     name
+    login
+    location
+    followers{
+      totalCount
+    }
+    following{
+      totalCount
+    }
+    starredRepositories{
+      totalCount
+    }
     company
     bio
     twitterUsername

@@ -13,7 +13,7 @@
           lg:hidden
           md:hidden
         "
-        v-if="loading === 1"
+        v-if="user"
         @click="toggleNavMenu"
       >
         <i class="fa fa-bars"></i>
@@ -33,7 +33,7 @@
     <!-- END Logo text or image -->
 
     <nav>
-      <ul class="list-reset md:flex md:items-center" v-if="loading === 1">
+      <ul class="list-reset md:flex md:items-center" v-if="user">
         <li class="md:ml-4">
           <form
             class="mb-4 w-full md:mb-0 text-center lg:block"
@@ -62,7 +62,7 @@
           class="md:ml-4 sm:mb-0 mb-2 lg:block"
           :class="isNavMenuShown ? 'block' : 'hidden'"
         >
-          <router-link to="">
+          <router-link to="/">
             <img
               src="https://bedramtamang.com.np/img/profile.jpg"
               alt="John Doe"
@@ -76,18 +76,20 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import store from "../../store";
 export default {
   name: "TheHeader",
-  data() {
-    return {
-      isNavMenuShown: false,
-      loading: 0,
-    };
-  },
   methods: {
     toggleNavMenu() {
-      this.isNavMenuShown = !this.isNavMenuShown;
+      store.dispatch("toggleNavMenu");
     },
+  },
+  computed: {
+    ...mapState({
+      isNavMenuShown: (state) => state.navMenuShown,
+      user: (state) => state.user,
+    }),
   },
 };
 </script>

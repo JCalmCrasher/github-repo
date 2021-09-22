@@ -28,7 +28,7 @@
           </button>
         </template>
         <template v-slot:cardBody>
-          <div v-if="$apollo.loading">
+          <div v-if="loading">
             <div class="flex justify-center mt-5">
               <hollow-dots-spinner
                 :animation-duration="1000"
@@ -53,8 +53,10 @@ import { HollowDotsSpinner } from "epic-spinners";
 import { PROFILE } from "../queries/profile";
 
 import card from "../components/widgets/card.vue";
+import store from "../store";
+import { mapState } from 'vuex';
 export default {
-  name: "SearchUser",
+  name: "UserSearch",
   components: { card, HollowDotsSpinner },
   data() {
     return {
@@ -70,6 +72,7 @@ export default {
   },
   methods: {
     setError(msg) {
+      this.error.hasError = true;
       this.error.message = msg;
     },
     searchFocus(val = true) {
@@ -77,24 +80,40 @@ export default {
     },
     searchUsername() {
       if (!this.username.length) {
-        return this.setError("Username is required.");
+        store.dispatch("setLoading", false);
+        return this.setError("Username is required!");
       }
+
+      store.dispatch("setLoading", true);
 
       this.$apollo
         .query({ query: PROFILE, variables: { login: this.username } })
         .then(({ data }) => {
-          this.search = data;
+          if (data) {
+            this.search = data;
+            store.dispatch("setUser", data);
+            store.dispatch("setLoading", false);
+          }
+        })
+        .catch((error) => {
+          store.dispatch("setLoading", false);
+          this.setError(error.message);
         });
     },
   },
-   watch: {
+  watch: {
     username(val) {
-      console.log(this.error);
       if (val.length < 1) {
-        return this.error.hasError = true;
+        return (this.error.hasError = true);
       }
-      return this.error.hasError=false
+      return (this.error.hasError = false);
     },
+  },
+  computed: {
+    ...mapState({
+      loading: (state) => state.loading,
+      user: (state) => state.user,
+    }),
   },
 };
 </script>

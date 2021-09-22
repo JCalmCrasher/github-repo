@@ -7,12 +7,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/search-user.vue')
+    component: () => import('../pages/home.vue')
   },
   {
     path: '/home',
     name: 'SearchUser',
-    component: () => import('../views/search-user.vue')
+    component: () => import('../pages/home.vue')
   },
 ]
 
