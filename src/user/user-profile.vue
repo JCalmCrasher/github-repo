@@ -88,11 +88,12 @@
                       {{ topRepository.node.primaryLanguage.name }}</small
                     >
                     <small
-                      ><i class="fas fa-clock"></i> {{ topRepository.node.createdAt }} </small
-                    >
+                      ><i class="fas fa-clock"></i>
+                      {{ topRepository.node.createdAt }}
+                    </small>
                     <small class="flex items-baseline"
-                      ><i class="fa fa-star" aria-hidden="true"></i
-                      ><span> 1</span></small
+                      ><i class="fa fa-star" aria-hidden="true"></i>
+                      <span> 1</span></small
                     >
                   </div>
                 </div>
