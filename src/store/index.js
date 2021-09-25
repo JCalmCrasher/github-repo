@@ -1,30 +1,24 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import * as repo from './modules/repo';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    repo
+  },
   state: {
     navMenuShown: false,
     loading: false,
-    user: null
+    basicUserInfo: null
   },
-  mutations: {
-    SET_USER(state, user) {
-      state.user = user;
-    },
-    TOGGLE_NAV_MENU(state,) {
-      state.navMenuShown = !state.navMenuShown;
-    },
-    SET_LOADING(state, loading) {
-      state.loading = loading;
-    }
-  },
+
   actions: {
-    setUser({
+    setBasicUserInfo({
       commit
-    }, user) {
-      commit('SET_USER', user);
+    }, info) {
+      commit('SET_BASIC_USER_INFO', info);
     },
     toggleNavMenu({
       commit
@@ -37,5 +31,16 @@ export default new Vuex.Store({
       commit('SET_LOADING', loading);
     }
   },
-  modules: {}
+
+  mutations: {
+    SET_BASIC_USER_INFO(state, info) {
+      state.basicUserInfo = info;
+    },
+    TOGGLE_NAV_MENU(state, ) {
+      state.navMenuShown = !state.navMenuShown;
+    },
+    SET_LOADING(state, loading) {
+      state.loading = loading;
+    }
+  },
 })

@@ -1,24 +1,25 @@
 <template>
   <div>
-    <div v-if="!user">
+    <div v-if="!basicInfo">
       <user-search />
     </div>
     <div v-else>
-      <user-profile :user="user" />
+      <user-profile :basicInfo="basicInfo" :topRepos="topRepos" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import UserProfile from '../user/user-profile.vue';
+import UserProfile from "../user/user-profile.vue";
 import UserSearch from "../user/user-search.vue";
 export default {
   components: { UserSearch, UserProfile },
   name: "Home",
   computed: {
     ...mapState({
-      user: (state) => state.user,
+      basicInfo: (state) => state.basicUserInfo,
+      topRepos: (state) => state.repo.topRepos,
     }),
   },
 };

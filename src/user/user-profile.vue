@@ -5,34 +5,39 @@
         <h1 class="title">Profile</h1>
         <card class="bio">
           <template v-slot:cardHeader>
-            <h1 class="font-bold">{{ user.user.name }}</h1>
+            <h1 class="font-bold">{{ basicInfo.user.name }}</h1>
             <button
               class="h-7 px-3 text-indigo-100 bg-green-600 rounded-lg text-sm"
             >
-              <span class="mr-2">{{ user.user.login }}</span>
+              <span class="mr-2">{{ basicInfo.user.login }}</span>
             </button>
           </template>
           <template v-slot:cardBody>
             <p class="overflow-y-auto">
-              {{ user.user.bio }}
+              {{ basicInfo.user.bio }}
             </p>
             <p class="space-x-4">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span>{{ user.user.location }}</span>
+              <span>{{ basicInfo.user.location }}</span>
             </p>
             <div class="flex space-x-3">
               <div class="space-x-1 text-sm">
                 <router-link to=""
                   ><span
                     ><i class="fa fa-users" aria-hidden="true"></i>
-                    {{ user.user.followers.totalCount }} followers</span
+                    {{ basicInfo.user.followers.totalCount }} followers</span
                   ></router-link
                 >
-                <router-link to=""><span>{{ user.user.following.totalCount }} followers</span></router-link>
+                <router-link to=""
+                  ><span
+                    >{{ basicInfo.user.following.totalCount }} followers</span
+                  ></router-link
+                >
               </div>
               <router-link to=""
                 ><span
-                  ><i class="fa fa-star" aria-hidden="true"></i> {{ user.user.starredRepositories.totalCount }}</span
+                  ><i class="fa fa-star" aria-hidden="true"></i>
+                  {{ basicInfo.user.starredRepositories.totalCount }}</span
                 ></router-link
               >
             </div>
@@ -51,17 +56,37 @@
           >
             <card
               class="bg-white repo"
-              v-for="(card, i) in [1, 2, 1, 2]"
+              v-for="(topRepository, i) in topRepositories"
               :key="i"
             >
               <template v-slot:cardHeader>
-                <h1 class="font-bold">Github GraphQl</h1>
+                <h1 class="font-bold">
+                  <a :href="topRepository.node.url"
+                    >{{ topRepository.node.name }}
+                  </a>
+                </h1>
               </template>
               <template v-slot:cardBody>
                 <div class="space-y-2">
-                  <p class="text-gray-400">Desktop App</p>
+                  <p
+                    class="text-gray-400"
+                    v-if="topRepository.node.shortDescriptionHTML"
+                  >
+                    {{ topRepository.node.shortDescriptionHTML }}
+                  </p>
+                  <p class="text-gray-400 italic" v-else>
+                    No description, website, or topics provided.
+                  </p>
                   <div class="flex sm:space-x-4 space-x-0 sm:flex-row flex-col">
-                    <small><i class="fas fa-laptop"></i> Vue</small>
+                    <small
+                      ><i
+                        class="fas fa-circle"
+                        :style="{
+                          color: topRepository.node.primaryLanguage.color,
+                        }"
+                      ></i>
+                      {{ topRepository.node.primaryLanguage.name }}</small
+                    >
                     <small
                       ><i class="fas fa-clock"></i> Updated 21 hours ago</small
                     >
@@ -98,7 +123,7 @@
                   >
                 </div>
                 <div class="space-y-1 pb-2">
-                  <p class="text-gray-400">Desktop App</p>
+                  <p class="text-gray-400 h-12">Desktop App</p>
                   <div class="flex space-x-4">
                     <small
                       ><i class="fas fa-laptop text-green-600"></i> Vue</small
@@ -130,10 +155,21 @@ import CardPaginate from "../components/widgets/card-paginate.vue";
 import Card from "../components/widgets/card.vue";
 export default {
   name: "UserProfile",
-  props: { user: { type: Object } },
+  props: { basicInfo: { type: Object }, topRepos: { type: Object } },
   components: {
     Card,
     CardPaginate,
+  },
+  computed: {
+    topRepositories() {
+      let repos = [];
+      if (this.topRepos.user) {
+        repos = this.topRepos.user.topRepositories.edges;
+        return repos;
+      }
+      repos = [];
+      return repos;
+    },
   },
 };
 </script>

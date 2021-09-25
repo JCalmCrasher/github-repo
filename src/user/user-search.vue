@@ -42,19 +42,17 @@
         </template>
       </card>
     </div>
-    <div>
-      {{ search }}
-    </div>
   </div>
 </template>
 
 <script>
 import { HollowDotsSpinner } from "epic-spinners";
-import { PROFILE } from "../queries/profile";
 
 import card from "../components/widgets/card.vue";
 import store from "../store";
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
+import { PROFILE } from "../queries/profile";
+import { POPULAR_REPO } from "../queries/popular-repo";
 export default {
   name: "UserSearch",
   components: { card, HollowDotsSpinner },
@@ -63,7 +61,6 @@ export default {
       isSearchFocus: false,
       username: "",
       login: "",
-      search: "",
       error: {
         message: "",
         hasError: false,
@@ -79,6 +76,7 @@ export default {
       this.isSearchFocus = val;
     },
     searchUsername() {
+      this.error.hasError = false;
       if (!this.username.length) {
         store.dispatch("setLoading", false);
         return this.setError("Username is required!");
@@ -86,19 +84,54 @@ export default {
 
       store.dispatch("setLoading", true);
 
-      this.$apollo
-        .query({ query: PROFILE, variables: { login: this.username } })
-        .then(({ data }) => {
-          if (data) {
-            this.search = data;
-            store.dispatch("setUser", data);
-            store.dispatch("setLoading", false);
-          }
+      this.fetchBasicInfo(this.username)
+        .then((response) => {
+          store.dispatch("setBasicUserInfo", response);
+          store.dispatch("setLoading", false);
+
+          this.fetchPopularRepoInfo(this.username)
+            .then((response) => {
+              store.dispatch("repo/setPopularRepos", response);
+            })
+            .catch((error) => {
+              console.log(error);
+              store.dispatch("repo/setPopularRepos", {});
+            });
         })
         .catch((error) => {
           store.dispatch("setLoading", false);
           this.setError(error.message);
         });
+    },
+    async fetchBasicInfo(login) {
+      return new Promise((resolve, reject) => {
+        this.$apollo
+          .query({ query: PROFILE, variables: { login: login } })
+          .then(({ data, errors }) => {
+            if (data) {
+              return resolve(data);
+            }
+            return reject(errors);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    async fetchPopularRepoInfo(login) {
+      return new Promise((resolve, reject) => {
+        this.$apollo
+          .query({ query: POPULAR_REPO, variables: { login: login } })
+          .then(({ data, errors }) => {
+            if (data) {
+              return resolve(data);
+            }
+            return reject(errors);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
     },
   },
   watch: {
