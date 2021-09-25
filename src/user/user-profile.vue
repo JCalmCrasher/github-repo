@@ -88,7 +88,7 @@
                       {{ topRepository.node.primaryLanguage.name }}</small
                     >
                     <small
-                      ><i class="fas fa-clock"></i> Updated 21 hours ago</small
+                      ><i class="fas fa-clock"></i> {{ topRepository.node.createdAt }} </small
                     >
                     <small class="flex items-baseline"
                       ><i class="fa fa-star" aria-hidden="true"></i

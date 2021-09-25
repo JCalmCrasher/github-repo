@@ -6,12 +6,12 @@ query userPopularRepo($login: String!)  {
     topRepositories(first: 4, orderBy: {field: UPDATED_AT, direction: DESC}){
      edges {
         node {
+          createdAt
           name
           shortDescriptionHTML
           primaryLanguage{
             name
             color
-            id
           }
           url
         }
