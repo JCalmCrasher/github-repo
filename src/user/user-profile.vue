@@ -156,7 +156,11 @@ import CardPaginate from "../components/widgets/card-paginate.vue";
 import Card from "../components/widgets/card.vue";
 export default {
   name: "UserProfile",
-  props: { basicInfo: { type: Object }, topRepos: { type: Object } },
+  props: {
+    basicInfo: { type: Object },
+    topRepos: { type: Object },
+    repos: { type: Object },
+  },
   components: {
     Card,
     CardPaginate,

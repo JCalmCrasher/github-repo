@@ -53,6 +53,7 @@ import store from "../store";
 import { mapState } from "vuex";
 import { PROFILE } from "../queries/profile";
 import { POPULAR_REPO } from "../queries/popular-repo";
+import { REPOS } from "../queries/repos";
 export default {
   name: "UserSearch",
   components: { card, HollowDotsSpinner },
@@ -92,6 +93,10 @@ export default {
           this.fetchPopularRepoInfo(this.username)
             .then((response) => {
               store.dispatch("repo/setPopularRepos", response);
+
+              this.fetchReposInfo(this.username).then((response) => {
+                console.log(response);
+              });
             })
             .catch((error) => {
               console.log(error);
@@ -122,6 +127,21 @@ export default {
       return new Promise((resolve, reject) => {
         this.$apollo
           .query({ query: POPULAR_REPO, variables: { login: login } })
+          .then(({ data, errors }) => {
+            if (data) {
+              return resolve(data);
+            }
+            return reject(errors);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    async fetchReposInfo(login) {
+      return new Promise((resolve, reject) => {
+        this.$apollo
+          .query({ query: REPOS, variables: { login: login } })
           .then(({ data, errors }) => {
             if (data) {
               return resolve(data);
