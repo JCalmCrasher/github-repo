@@ -109,7 +109,7 @@
           </div>
           <div class="space-y-2">
             <card
-              v-for="(card, i) in [1, 2, 3, 4, 5, 6, 7, 8]"
+              v-for="(repository, i) in repositories"
               :key="i"
               :isBigCard="false"
               :hasHeader="false"
@@ -117,23 +117,41 @@
             >
               <template v-slot:cardBody>
                 <div class="flex space-x-2">
-                  <h1 class="font-bold">Github GraphQl</h1>
+                  <h1 class="font-bold">
+                    <a :href="repository.node.url"
+                      >{{ repository.node.name }}
+                    </a>
+                  </h1>
                   <small
                     class="text-xs border border-gray-600 rounded-2xl px-2 py-1"
                     >Private</small
                   >
                 </div>
                 <div class="space-y-1 pb-2">
-                  <p class="text-gray-400 h-12">Desktop App</p>
+                  <p
+                    class="text-gray-400 h-12"
+                    v-if="repository.node.shortDescriptionHTML"
+                  >
+                    {{ repository.node.shortDescriptionHTML }}
+                  </p>
+                  <p class="text-gray-400 italic" v-else>
+                    No description, website, or topics provided.
+                  </p>
                   <div class="flex space-x-4">
                     <small
-                      ><i class="fas fa-laptop text-green-600"></i> Vue</small
+                      ><i
+                        class="fas fa-circle"
+                        :style="{
+                          color: repository.node.primaryLanguage.color,
+                        }"
+                      ></i>
+                      {{ repository.node.primaryLanguage.name }}</small
                     >
                     <small
                       ><i class="fas fa-clock"></i>
-                      <span class="text-gray-300"
-                        >Updated 21 hours ago</span
-                      ></small
+                      <span class="text-gray-300">{{
+                        repository.node.createdAt
+                      }}</span></small
                     >
                     <small
                       ><i class="fa fa-star" aria-hidden="true"></i
@@ -166,6 +184,15 @@ export default {
     CardPaginate,
   },
   computed: {
+    repositories() {
+      let repos = [];
+      if (this.repos.user) {
+        repos = this.repos.user.repositories.edges;
+        return repos;
+      }
+      repos = [];
+      return repos;
+    },
     topRepositories() {
       let repos = [];
       if (this.topRepos.user) {

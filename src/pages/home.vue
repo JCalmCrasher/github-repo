@@ -4,7 +4,7 @@
       <user-search />
     </div>
     <div v-else>
-      <user-profile :basicInfo="basicInfo" :topRepos="topRepos" />
+      <user-profile :basicInfo="basicInfo" :topRepos="topRepos" :repos="repos" />
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
     ...mapState({
       basicInfo: (state) => state.basicUserInfo,
       topRepos: (state) => state.repo.topRepos,
+      repos: (state) => state.repo.repos,
     }),
   },
 };

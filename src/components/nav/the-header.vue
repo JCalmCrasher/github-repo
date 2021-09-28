@@ -13,7 +13,7 @@
           lg:hidden
           md:hidden
         "
-        v-if="user"
+        v-if="userInfo"
         @click="toggleNavMenu"
       >
         <i class="fa fa-bars"></i>
@@ -33,7 +33,7 @@
     <!-- END Logo text or image -->
 
     <nav>
-      <ul class="list-reset md:flex md:items-center" v-if="user">
+      <ul class="list-reset md:flex md:items-center" v-if="userInfo">
         <li class="md:ml-4">
           <form
             class="mb-4 w-full md:mb-0 text-center lg:block"
@@ -88,7 +88,7 @@ export default {
   computed: {
     ...mapState({
       isNavMenuShown: (state) => state.navMenuShown,
-      user: (state) => state.user,
+      userInfo: (state) => state.basicUserInfo,
     }),
   },
 };

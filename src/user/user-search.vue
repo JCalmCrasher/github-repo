@@ -86,16 +86,16 @@ export default {
       store.dispatch("setLoading", true);
 
       this.fetchBasicInfo(this.username)
-        .then((response) => {
-          store.dispatch("setBasicUserInfo", response);
+        .then((userInfoData) => {
+          store.dispatch("setBasicUserInfo", userInfoData);
           store.dispatch("setLoading", false);
 
           this.fetchPopularRepoInfo(this.username)
-            .then((response) => {
-              store.dispatch("repo/setPopularRepos", response);
+            .then((popularRepos) => {
+              store.dispatch("repo/setPopularRepos", popularRepos);
 
-              this.fetchReposInfo(this.username).then((response) => {
-                console.log(response);
+              this.fetchReposInfo(this.username).then((repos) => {
+                store.dispatch("repo/setRepos", repos);
               });
             })
             .catch((error) => {
