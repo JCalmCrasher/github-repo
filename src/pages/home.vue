@@ -1,20 +1,13 @@
 <template>
-  <div>
-    <div v-if="!basicInfo">
-      <user-search />
-    </div>
-    <div v-else>
-      <user-profile :basicInfo="basicInfo" :topRepos="topRepos" :repos="repos" />
-    </div>
-  </div>
+  <user-profile v-if="basicInfo" :basicInfo="basicInfo" :topRepos="topRepos" :repos="repos" />
 </template>
 
 <script>
 import { mapState } from "vuex";
 import UserProfile from "../user/user-profile.vue";
-import UserSearch from "../user/user-search.vue";
+
 export default {
-  components: { UserSearch, UserProfile },
+  components: { UserProfile },
   name: "Home",
   computed: {
     ...mapState({
@@ -22,6 +15,11 @@ export default {
       topRepos: (state) => state.repo.topRepos,
       repos: (state) => state.repo.repos,
     }),
+  },
+  mounted() {
+    if (!this.basicInfo) {
+      return this.$router.push("/");
+    }
   },
 };
 </script>

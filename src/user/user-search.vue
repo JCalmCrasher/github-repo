@@ -89,6 +89,7 @@ export default {
         .then((userInfoData) => {
           store.dispatch("setBasicUserInfo", userInfoData);
           store.dispatch("setLoading", false);
+          this.$router.push(`search`);
 
           this.fetchPopularRepoInfo(this.username)
             .then((popularRepos) => {

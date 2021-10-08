@@ -45,7 +45,15 @@
         </card>
         <div class="flex flex-col mt-4">
           <h1 class="title">Popular Repos</h1>
+          <hollow-dots-spinner
+            :animation-duration="1000"
+            :dot-size="15"
+            :dots-num="3"
+            color="#ff1d5e"
+            v-if="topRepositories.length<1"
+          />
           <div
+            v-else
             class="
               grid grid-cols-1
               space-y-2
@@ -108,12 +116,20 @@
             <h1 class="title">Open</h1>
           </div>
           <div class="space-y-2">
+            <hollow-dots-spinner
+              v-if="topRepositories.length<1"
+              :animation-duration="1000"
+              :dot-size="15"
+              :dots-num="3"
+              color="#ff1d5e"
+            />
             <card
-              v-for="(repository, i) in repositories"
               :key="i"
               :isBigCard="false"
               :hasHeader="false"
               :hasFooter="true"
+              v-else
+              v-for="(repository, i) in repositories"
             >
               <template v-slot:cardBody>
                 <div class="flex space-x-2">
@@ -170,6 +186,7 @@
 </template>
 
 <script>
+import { HollowDotsSpinner } from "epic-spinners";
 import CardPaginate from "../components/widgets/card-paginate.vue";
 import Card from "../components/widgets/card.vue";
 export default {
@@ -182,6 +199,7 @@ export default {
   components: {
     Card,
     CardPaginate,
+    HollowDotsSpinner,
   },
   computed: {
     repositories() {

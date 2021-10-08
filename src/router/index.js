@@ -1,23 +1,23 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../pages/home.vue')
+    component: () => import('../pages/welcome.vue')
   },
   {
-    path: '/home',
-    name: 'SearchUser',
+    path: '/search',
+    name: 'UserSearch',
     component: () => import('../pages/home.vue')
   },
-]
+];
 
 const router = new VueRouter({
   routes
-})
+});
 
-export default router
+export default router;
