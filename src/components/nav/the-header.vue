@@ -64,8 +64,8 @@
         >
           <router-link to="/">
             <img
-              src="https://bedramtamang.com.np/img/profile.jpg"
-              alt="John Doe"
+              :src="avatarUrl"
+              :alt="userInfo.user.login"
               class="w-8 h-8 rounded-full mx-auto"
             />
           </router-link>
@@ -89,6 +89,7 @@ export default {
     ...mapState({
       isNavMenuShown: (state) => state.navMenuShown,
       userInfo: (state) => state.basicUserInfo,
+      avatarUrl: (state) => state.avatarUrl,
     }),
   },
 };

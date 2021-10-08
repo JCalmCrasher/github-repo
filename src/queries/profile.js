@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export const PROFILE = gql `
 query userProfile($login: String!)  {
   user(login:$login) {
+    avatarUrl
     name
     login
     location
