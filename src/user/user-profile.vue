@@ -189,6 +189,7 @@
 import { HollowDotsSpinner } from "epic-spinners";
 import CardPaginate from "../components/widgets/card-paginate.vue";
 import Card from "../components/widgets/card.vue";
+
 export default {
   name: "UserProfile",
   props: {
