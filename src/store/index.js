@@ -11,7 +11,8 @@ export default new Vuex.Store({
   state: {
     navMenuShown: false,
     loading: false,
-    basicUserInfo: null
+    basicUserInfo: null,
+    avatarUrl: ""
   },
 
   actions: {
@@ -35,6 +36,7 @@ export default new Vuex.Store({
   mutations: {
     SET_BASIC_USER_INFO(state, info) {
       state.basicUserInfo = info;
+      state.avatarUrl = info.user.avatarUrl;
     },
     TOGGLE_NAV_MENU(state, ) {
       state.navMenuShown = !state.navMenuShown;
