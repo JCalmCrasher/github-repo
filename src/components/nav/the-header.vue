@@ -98,7 +98,7 @@ export default {
 <style scoped>
 header {
   background-color: rgba(27, 24, 39);
-  @apply border-b
+  @apply
       md:flex
       md:items-center
       md:justify-between
