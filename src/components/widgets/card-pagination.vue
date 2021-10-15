@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "CardPaginate",
+  name: "CardPagination",
 };
 </script>
 
