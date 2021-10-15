@@ -27,6 +27,7 @@
         "
       >
         <img src="../../assets/github.png" width="50" />
+        
         <router-link to="/" class="my-auto">Github Search</router-link>
       </h1>
     </div>
