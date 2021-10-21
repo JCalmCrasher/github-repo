@@ -57,7 +57,7 @@
             class="
               grid grid-cols-1
               space-y-2
-              md:grid-cols-2
+              lg:grid-cols-2
               md:gap-5
               md:space-y-0
             "
@@ -77,12 +77,12 @@
               <template v-slot:cardBody>
                 <div class="space-y-2">
                   <p
-                    class="text-gray-400"
+                    class="repo-info text-gray-400"
                     v-if="topRepository.node.shortDescriptionHTML"
                   >
                     {{ topRepository.node.shortDescriptionHTML }}
                   </p>
-                  <p class="text-gray-400 italic" v-else>
+                  <p class="repo-info text-gray-400 italic" v-else>
                     No description, website, or topics provided.
                   </p>
                   <div class="flex sm:space-x-4 space-x-0 sm:flex-row flex-col">
@@ -97,7 +97,7 @@
                     >
                     <small
                       ><i class="fas fa-clock"></i>
-                      {{ topRepository.node.createdAt }}
+                      {{ formatCreatedAt(topRepository.node.createdAt) }}
                     </small>
                     <small class="flex items-baseline"
                       ><i class="fa fa-star" aria-hidden="true"></i>
@@ -145,12 +145,12 @@
                 </div>
                 <div class="space-y-1 pb-2">
                   <p
-                    class="text-gray-400 h-12"
+                    class="repo-info text-gray-400 h-12"
                     v-if="repository.node.shortDescriptionHTML"
                   >
                     {{ repository.node.shortDescriptionHTML }}
                   </p>
-                  <p class="text-gray-400 italic" v-else>
+                  <p class="repo-info text-gray-400 italic" v-else>
                     No description, website, or topics provided.
                   </p>
                   <div class="flex space-x-4">
@@ -196,6 +196,12 @@ export default {
     basicInfo: { type: Object },
     topRepos: { type: Object },
     repos: { type: Object },
+  },
+  methods: {
+    formatCreatedAt(createdAt) {
+      return createdAt;
+      // return format(createdAt, "yyyy-MM-dd");
+    },
   },
   components: {
     Card,
@@ -245,5 +251,9 @@ h1.title {
   background-image: url("../assets/repo.svg");
   background-size: 560%;
   background-position: left;
+}
+
+.repo-info {
+  @apply lg:text-base md:text-sm text-xs;
 }
 </style>

@@ -13,6 +13,7 @@ query userRepos($login: String!)  {
             color
             name
           }
+          url
         }
       }
     }
