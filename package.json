@@ -19,6 +19,7 @@
     "epic-spinners": "^1.1.0",
     "lowdb": "^1.0.0",
     "mkdirp": "^0.5.1",
+    "number-js-formatter": "^0.1.0",
     "postcss": "^7",
     "shortid": "^2.2.8",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",

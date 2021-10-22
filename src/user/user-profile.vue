@@ -25,12 +25,16 @@
                 <router-link to=""
                   ><span
                     ><i class="fa fa-users" aria-hidden="true"></i>
-                    {{ basicInfo.user.followers.totalCount }} followers</span
+                    {{ formatFollowers(basicInfo.user.followers.totalCount,2) }}
+                    followers</span
                   ></router-link
                 >
                 <router-link to=""
                   ><span
-                    >{{ basicInfo.user.following.totalCount }} followers</span
+                    >{{
+                      formatFollowers(basicInfo.user.following.totalCount)
+                    }}
+                    followers</span
                   ></router-link
                 >
               </div>
@@ -50,7 +54,7 @@
             :dot-size="15"
             :dots-num="3"
             color="#ff1d5e"
-            v-if="topRepositories.length<1"
+            v-if="topRepositories.length < 1"
           />
           <div
             v-else
@@ -68,8 +72,8 @@
             >
               <template v-slot:cardHeader>
                 <h1 class="font-bold">
-                  <a :href="topRepository.node.url"
-                    > {{ topRepository.node.name }}
+                  <a :href="topRepository.node.url">
+                    {{ topRepository.node.name }}
                   </a>
                 </h1>
               </template>
@@ -116,7 +120,7 @@
           </div>
           <div class="space-y-2">
             <hollow-dots-spinner
-              v-if="topRepositories.length<1"
+              v-if="topRepositories.length < 1"
               :animation-duration="1000"
               :dot-size="15"
               :dots-num="3"
@@ -164,9 +168,9 @@
                     >
                     <small
                       ><i class="fas fa-clock"></i>
-                      <span class="text-gray-300"> {{
-                        formatCreatedAt(repository.node.createdAt)
-                      }}</span></small
+                      <span class="text-gray-300">
+                        {{ formatCreatedAt(repository.node.createdAt) }}</span
+                      ></small
                     >
                     <small
                       ><i class="fa fa-star" aria-hidden="true"></i
@@ -185,6 +189,7 @@
 </template>
 
 <script>
+import { friendlyFormat } from "number-js-formatter";
 import { format } from "date-fns";
 import { HollowDotsSpinner } from "epic-spinners";
 import CardPaginate from "../components/widgets/card-paginate.vue";
@@ -198,6 +203,9 @@ export default {
     repos: { type: Object },
   },
   methods: {
+    formatFollowers(n, d = 0) {
+      return friendlyFormat(n, d);
+    },
     formatCreatedAt(createdAt) {
       return `${format(createdAt, "MMMM")} ${format(createdAt, "DD")}, ${format(
         createdAt,
@@ -229,6 +237,9 @@ export default {
       repos = [];
       return repos;
     },
+  },
+  mounted() {
+    console.log("format", friendlyFormat(1000000000000000, 3));
   },
 };
 </script>
