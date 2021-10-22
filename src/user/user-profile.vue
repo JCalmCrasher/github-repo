@@ -50,8 +50,7 @@
               grid grid-cols-1
               space-y-2
               lg:grid-cols-2
-              md:gap-5
-              md:space-y-0
+              md:gap-5 md:space-y-0
             "
           >
             <card
@@ -62,7 +61,7 @@
               <template v-slot:cardHeader>
                 <h1 class="font-bold">
                   <a :href="topRepository.node.url"
-                    >{{ topRepository.node.name }}
+                    > {{ topRepository.node.name }}
                   </a>
                 </h1>
               </template>
@@ -149,8 +148,8 @@
                     >
                     <small
                       ><i class="fas fa-clock"></i>
-                      <span class="text-gray-300">{{
-                        repository.node.createdAt
+                      <span class="text-gray-300"> {{
+                        formatCreatedAt(repository.node.createdAt)
                       }}</span></small
                     >
                     <small
@@ -183,7 +182,10 @@ export default {
   },
   methods: {
     formatCreatedAt(createdAt) {
-      return format(createdAt, "yyyy-MM-dd");
+      return `${format(createdAt, "MMMM")} ${format(createdAt, "DD")}, ${format(
+        createdAt,
+        "YYYY"
+      )}`;
     },
   },
   components: {
