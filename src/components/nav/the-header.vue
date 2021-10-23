@@ -27,6 +27,7 @@
         "
       >
         <img src="../../assets/github.png" width="50" />
+
         <router-link to="/" class="my-auto">Github Search</router-link>
       </h1>
     </div>
@@ -53,6 +54,8 @@
                 bg-gray-800
               "
               placeholder="Search or jump to..."
+              :value="userInfo.user.login"
+              @keyup="searchUsername"
               type="text"
             />
             <button class="hidden">Submit</button>
@@ -98,7 +101,7 @@ export default {
 <style scoped>
 header {
   background-color: rgba(27, 24, 39);
-  @apply border-b
+  @apply
       md:flex
       md:items-center
       md:justify-between

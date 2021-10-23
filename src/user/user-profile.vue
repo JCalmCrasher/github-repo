@@ -177,7 +177,7 @@
               </template>
             </card>
           </div>
-          <card-paginate />
+          <card-pagination />
         </div>
       </div>
     </div>
@@ -185,9 +185,8 @@
 </template>
 
 <script>
-import { format } from "date-fns";
 import { HollowDotsSpinner } from "epic-spinners";
-import CardPaginate from "../components/widgets/card-paginate.vue";
+import CardPagination from "../components/widgets/card-pagination.vue";
 import Card from "../components/widgets/card.vue";
 
 export default {
@@ -207,7 +206,7 @@ export default {
   },
   components: {
     Card,
-    CardPaginate,
+    CardPagination,
     HollowDotsSpinner,
   },
   computed: {
