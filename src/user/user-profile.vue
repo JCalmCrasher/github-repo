@@ -50,7 +50,7 @@
             :dot-size="15"
             :dots-num="3"
             color="#ff1d5e"
-            v-if="topRepositories.length<1"
+            v-if="topRepositories.length < 1"
           />
           <div
             v-else
@@ -68,8 +68,8 @@
             >
               <template v-slot:cardHeader>
                 <h1 class="font-bold">
-                  <a :href="topRepository.node.url"
-                    > {{ topRepository.node.name }}
+                  <a :href="topRepository.node.url">
+                    {{ topRepository.node.name }}
                   </a>
                 </h1>
               </template>
@@ -116,7 +116,7 @@
           </div>
           <div class="space-y-2">
             <hollow-dots-spinner
-              v-if="topRepositories.length<1"
+              v-if="topRepositories.length < 1"
               :animation-duration="1000"
               :dot-size="15"
               :dots-num="3"
@@ -164,9 +164,9 @@
                     >
                     <small
                       ><i class="fas fa-clock"></i>
-                      <span class="text-gray-300"> {{
-                        formatCreatedAt(repository.node.createdAt)
-                      }}</span></small
+                      <span class="text-gray-300">
+                        {{ formatCreatedAt(repository.node.createdAt) }}</span
+                      ></small
                     >
                     <small
                       ><i class="fa fa-star" aria-hidden="true"></i
@@ -185,6 +185,7 @@
 </template>
 
 <script>
+import { format } from "date-fns";
 import { HollowDotsSpinner } from "epic-spinners";
 import CardPagination from "../components/widgets/card-pagination.vue";
 import Card from "../components/widgets/card.vue";
