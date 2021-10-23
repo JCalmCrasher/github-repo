@@ -30,7 +30,7 @@
                 >
                 <router-link to=""
                   ><span
-                    >{{ basicInfo.user.following.totalCount }} followers</span
+                    >{{ basicInfo.user.following.totalCount }} following</span
                   ></router-link
                 >
               </div>
