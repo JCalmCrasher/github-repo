@@ -39,13 +39,15 @@
           <form
             class="mb-4 w-full md:mb-0 text-center lg:block"
             :class="isNavMenuShown ? 'block' : 'hidden'"
+            @submit.prevent="searchUser"
           >
             <label class="hidden" for="search-form">Search</label>
             <input
               class="
                 border border-gray-600
                 focus:outline-none
-                focus:ring-2 focus:ring-green-500
+                focus:ring-2
+                focus:ring-green-500
                 focus:border-transparent
                 rounded-lg
                 shadow-inner
@@ -54,8 +56,7 @@
                 bg-gray-800
               "
               placeholder="Search or jump to..."
-              :value="userInfo.user.login"
-              @keyup="searchUsername"
+              v-model="username"
               type="text"
             />
             <button class="hidden">Submit</button>
@@ -83,7 +84,13 @@ import { mapState } from "vuex";
 import store from "../../store";
 export default {
   name: "TheHeader",
+  data() {
+    return {};
+  },
   methods: {
+    searchUser() {
+      
+    },
     toggleNavMenu() {
       store.dispatch("toggleNavMenu");
     },
@@ -94,6 +101,12 @@ export default {
       userInfo: (state) => state.basicUserInfo,
       avatarUrl: (state) => state.avatarUrl,
     }),
+    username() {
+      if (this.userInfo) {
+        return this.userInfo.user.login;
+      }
+      return "";
+    },
   },
 };
 </script>
@@ -101,8 +114,7 @@ export default {
 <style scoped>
 header {
   background-color: rgba(27, 24, 39);
-  @apply
-      md:flex
+  @apply md:flex
       md:items-center
       md:justify-between
       p-4

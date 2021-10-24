@@ -5,7 +5,7 @@
         <h1 class="title">Profile</h1>
         <card class="bio">
           <template v-slot:cardHeader>
-            <h1 class="font-bold">{{ basicInfo.user.name }}</h1>
+            <h1 class="font-bold"><a :href="basicInfo.user.url">{{ basicInfo.user.name }}</a></h1>
             <button
               class="h-7 px-3 text-indigo-100 bg-green-600 rounded-lg text-sm"
             >
