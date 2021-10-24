@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ttt}}
     <div
       class="search__wrapper"
       :class="isSearchFocus ? 'lg:w-1/2 w-full' : 'lg:w-1/3 w-11/12'"
@@ -54,11 +55,23 @@ import { mapState } from "vuex";
 import { PROFILE } from "../queries/profile";
 import { POPULAR_REPO } from "../queries/popular-repo";
 import { REPOS } from "../queries/repos";
+import gql from "graphql-tag";
+const todoItemsQuery = gql`
+  {
+    todoItems {
+      id
+      text
+      done
+    }
+  }
+`;
+
 export default {
   name: "UserSearch",
   components: { card, HollowDotsSpinner },
   data() {
     return {
+      ttt:'',
       isSearchFocus: false,
       username: "",
       login: "",
@@ -168,6 +181,15 @@ export default {
       loading: (state) => state.loading,
       user: (state) => state.user,
     }),
+  },
+  mounted() {
+    this.$apollo
+      .query({ query: todoItemsQuery })
+      .then((res) => {
+        this.ttt=res
+        console.log("res", res);
+      })
+      .catch((err) => console.log('err',err));
   },
 };
 </script>

@@ -4,21 +4,6 @@ import {
   createApolloClient,
   restartWebsockets
 } from 'vue-cli-plugin-apollo/graphql-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-const gCache = new InMemoryCache();
-
-gCache.writeData({
-  data: {
-    todoItems: [
-      {
-        __typename: 'Item',
-        id: 'dqdBHJGgjgjg',
-        text: 'test',
-        done: true,
-      },
-    ],
-  },
-});
 
 // Install the vue plugin
 Vue.use(VueApollo);
@@ -52,7 +37,7 @@ const defaultOptions = {
   // link: myLink
 
   // Override default cache
-  cache: gCache,
+  // cache: myCache,
 
   // Override the way the Authorization header is set
   getAuth: () => {
