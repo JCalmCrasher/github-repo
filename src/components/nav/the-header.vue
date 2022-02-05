@@ -80,27 +80,20 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import store from "../../store";
 export default {
   name: "TheHeader",
   data() {
-    return {};
+    return {
+      isNavMenuShown: false,
+      userInfo: null,
+      avatarUrl: true,
+    };
   },
   methods: {
-    searchUser() {
-      
-    },
-    toggleNavMenu() {
-      store.dispatch("toggleNavMenu");
-    },
+    searchUser() {},
+    toggleNavMenu() {},
   },
   computed: {
-    ...mapState({
-      isNavMenuShown: (state) => state.navMenuShown,
-      userInfo: (state) => state.basicUserInfo,
-      avatarUrl: (state) => state.avatarUrl,
-    }),
     username() {
       if (this.userInfo) {
         return this.userInfo.user.login;

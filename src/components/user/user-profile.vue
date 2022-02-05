@@ -187,8 +187,8 @@
 <script>
 import { format } from "date-fns";
 import { HollowDotsSpinner } from "epic-spinners";
-import CardPagination from "../components/widgets/card-pagination.vue";
-import Card from "../components/widgets/card.vue";
+import CardPagination from "../widgets/card-pagination.vue";
+import Card from "../widgets/card.vue";
 
 export default {
   name: "UserProfile",
@@ -243,14 +243,14 @@ h1.title {
 }
 
 .bio {
-  background-image: url("../assets/profile.svg");
+  background-image: url("../../assets/profile.svg");
   background-size: 300%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
 .repo {
-  background-image: url("../assets/repo.svg");
+  background-image: url("../../assets/repo.svg");
   background-size: 560%;
   background-position: left;
 }

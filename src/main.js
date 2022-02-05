@@ -2,25 +2,15 @@ import Vue from 'vue';
 import App from './App.vue';
 import './assets/tailwind.css';
 import router from './router';
-import store from './store';
 import {
   createProvider
 } from './vue-apollo';
-
-import gql from 'graphql-tag';
+import { typeDefs } from './resolvers';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 Vue.config.productionTip = false;
 
 const cache = new InMemoryCache();
-
-const typeDefs = gql`
-  type Item {
-    id: ID!
-    text: String!
-    done: Boolean!
-  }
-`;
 
 const apolloClientProvider = createProvider({
   cache,
@@ -32,10 +22,11 @@ cache.writeData({
   data: {
     todoItems: [
       {
-        __typename: 'Item',
-        id: 'dqdBHJGgjgjg',
-        text: 'test',
-        done: true,
+        __typename: 'User',
+        avatarUrl: 'joshua1234',
+        name: 'Josh',
+        login: 'JCalmCrasher',
+        location: 'Abuja',
       },
     ],
   },
@@ -43,7 +34,6 @@ cache.writeData({
 
 new Vue({
   router,
-  store,
   apolloProvider: apolloClientProvider,
   render: h => h(App)
 }).$mount('#app')
